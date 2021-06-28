@@ -16,17 +16,9 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 ds = TabularDatasetFactory.from_delimited_files(data, separator=',', header=True, encoding='utf8')
 #ds = pd.read_csv(data)
+#print(ds.columns)
+#print(ds.head())
 
-
-
-x, y = clean_data(ds)
-
-# TODO: Split data into train and test sets.
-
-### YOUR CODE HERE ###
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.80, test_size = 0.20, random_state=1)
-
-run = Run.get_context()
 
 def clean_data(data):
     # Dict for cleaning data
@@ -53,7 +45,19 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
-    
+    return x_df, y_df
+
+
+x, y = clean_data(ds)
+
+# TODO: Split data into train and test sets.
+
+### YOUR CODE HERE ###
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.80, test_size = 0.20, random_state=1)
+
+run = Run.get_context()
+
+
 
 def main():
     # Add arguments to script
@@ -70,7 +74,7 @@ def main():
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
-    run.log("Accuracy", np.float(accuracy))
+    run.log("accuracy", np.float(accuracy))
 
 if __name__ == '__main__':
     main()
