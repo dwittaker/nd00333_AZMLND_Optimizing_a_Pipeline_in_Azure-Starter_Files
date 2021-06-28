@@ -10,10 +10,12 @@ import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
 
+#https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-register-datasets#create-a-tabulardataset
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-ds = pd.read_csv(data)
+ds = TabularDatasetFactory.from_delimited_files(data, separator=',', header=True, encoding='utf8')
+#ds = pd.read_csv(data)
 
 
 
@@ -21,7 +23,7 @@ x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
 
-### YOUR CODE HERE ###a
+### YOUR CODE HERE ###
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.80, test_size = 0.20, random_state=1)
 
 run = Run.get_context()
