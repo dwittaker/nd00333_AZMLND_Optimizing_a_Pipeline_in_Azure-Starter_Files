@@ -76,5 +76,8 @@ def main():
     accuracy = model.score(x_test, y_test)
     run.log("accuracy", np.float(accuracy))
 
+    os.makedirs('outputs', exist_ok=True)
+    joblib.dump(value=model, filename='outputs/sklearn_hdrive_model.pkl')
+
 if __name__ == '__main__':
     main()
