@@ -30,6 +30,8 @@ A bandit policy was used to ensure efficient use of time and resources. This pol
 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
+Data source improvement - this dataset was heavily imbalanced which could result in bias. There were ~33k samples, with a 89-11 percent split on the 2 classes. Generally, we could either get more balanced data, or reduce the samples in favor of balance. Of course, that would be experimental, as it might not be a huge issue.
+On another note, we could also look at different metrics to understand their pros and cons and to determine suitability in this business case.
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
