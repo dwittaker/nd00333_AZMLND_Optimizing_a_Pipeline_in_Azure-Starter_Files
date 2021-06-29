@@ -39,5 +39,6 @@ Data source improvement - this dataset was heavily imbalanced which could result
 On another note, we could also look at different metrics to understand their pros and cons and to determine suitability in this business case.
 
 ## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+![image](https://user-images.githubusercontent.com/4123909/123818777-80b62400-d8b6-11eb-8053-5f9cd777f791.png)
+![image](https://user-images.githubusercontent.com/4123909/123818800-86ac0500-d8b6-11eb-9323-0690d532c84b.png)
+
